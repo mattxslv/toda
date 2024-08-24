@@ -1,62 +1,85 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
-
-
-body{
-  font-family: 'Nunito', sans-serif;
-  color:#676767;
-  background-color: #1e1e1e;
+body {
+  background-color: #f8f9fc;
+  color: #4e73df;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.bg-card{
-  background-color:#171717;
-}
-.bg-sidebar-card-top{
-  background-color: #353535;
-}
-.sidebar-separator-top{
-  border-bottom: 1px solid #2e2e2e;
-}
-.sidebar-separator-bottom{
-  border-top: 1px solid #2e2e2e;
-}
-.text-premium-yellow{
-  color: #f7b91c;
-}
-.icon-background{
-  background: #2d2d2d;
+.card {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  background-color: #fff;
 }
 
-.tooltip-head{
-background: #1d1d1d;
-}
-.tooltip-body{
-  background:#252525 ;
+.card:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
-.search-icon{
-  top: 50%;
-  transform: translate(0, -50%);
-}
-
-.card-stack-border{
-  border-bottom: 2px solid #696969;
-}
-.bg-details{
-  background-color: #1e1e1e;
-}
-
-.add-component-head{
-  background-color: #181818;
-  background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
-}
-
-.sidebar-item-selected{
+.card-header {
+  background-color: #4e73df;
   color: white;
-  border-right: 2px solid white;
+  border-bottom: 1px solid #e3e6f0;
+  padding: 1rem;
 }
-.sidebar-item{
-  border-right: 2px solid transparent;
+
+.card-body {
+  padding: 1.5rem;
+  font-size: 1.1rem;
 }
-.sidebar-item:hover {
- color:#a1a0a0;
+
+.card-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.chart-container {
+  position: relative;
+  height: 40vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.table thead th {
+  background-color: #4e73df;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  border-bottom: 2px solid #e3e6f0;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.table tbody tr:hover {
+  background-color: #f1f1f1;
+  transition: background-color 0.3s ease;
+}
+
+.btn {
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background-color: #4e73df;
+  border-color: #4e73df;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+  background-color: #2e59d9;
+  border-color: #2e59d9;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.text-gray-800 {
+  color: #343a40;
+  font-weight: 600;
 }
