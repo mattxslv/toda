@@ -34,17 +34,18 @@ if (isset($_POST['offense_id'])) {
             // Bind parameters as strings
             mysqli_stmt_bind_param($stmt, 'si', $$field, $offense_id);
             $query_run = mysqli_stmt_execute($stmt);
-
+    
             // Debugging: Log the query and its parameters
             error_log("Executing query: $query with parameters: " . $$field . ", $offense_id");
-
+        } // Add this closing brace
+    
         if ($query_run) {
             $_SESSION['success'] = "Update successful";
         } else {
             $_SESSION['status'] = "Update failed";
         }
     }
-
+    
     header("Location: " . $_SERVER['HTTP_REFERER']); // Redirect back to the same page
     exit(); // Ensure no further code is executed after the redirect
 }
