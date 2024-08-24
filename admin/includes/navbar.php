@@ -239,4 +239,9 @@ if (isset($_SESSION['username'])) {
 </nav>
 <!-- End of Topbar -->
 
-    <!-- Remove the script to maintain sidebar state -->
+<!-- Custom CSS to ensure logout button is clickable -->
+<style>
+    .navbar-nav .nav-item .dropdown-menu {
+        z-index: 1050; /* Ensure dropdown is above other elements */
+    }
+</style>

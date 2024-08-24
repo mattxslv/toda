@@ -304,3 +304,8 @@ if (!$connection) {
 </body>
 
 </html>
+
+<?php
+include('includes/scripts.php');
+include('includes/footer.php');
+?>

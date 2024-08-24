@@ -3,58 +3,58 @@ session_start();
 
 require_once __DIR__ . '/vendor/autoload.php'; // Include the Composer autoload file
 
-// Google Client Configuration
-$client = new Google_Client();
-$client->setClientId('1054976849178-0c3rf8e7tdq1onhuo7mhl6cqftkbmqnl.apps.googleusercontent.com');
-$client->setClientSecret('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');
-$client->setRedirectUri('http://localhost/toda_admin/admin/login.php'); // Ensure this matches the URI in Google Cloud Console
-$client->addScope('email');
-$client->addScope('profile');
+// Google Client Configuration (remove this if not needed)
+// $client = new Google_Client();
+// $client->setClientId('YOUR_CLIENT_ID');
+// $client->setClientSecret('YOUR_CLIENT_SECRET');
+// $client->setRedirectUri('YOUR_REDIRECT_URI');
+// $client->addScope('email');
+// $client->addScope('profile');
 
-if (isset($_GET['code'])) {
-    $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
+// if (isset($_GET['code'])) {
+//     $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
     
-    if (isset($token['error'])) {
-        // Handle error
-        echo 'Error fetching access token: ' . $token['error'];
-        exit();
-    }
+//     if (isset($token['error'])) {
+//         // Handle error
+//         echo 'Error fetching access token: ' . $token['error'];
+//         exit();
+//     }
 
-    if (isset($token['access_token'])) {
-        $client->setAccessToken($token['access_token']);
+//     if (isset($token['access_token'])) {
+//         $client->setAccessToken($token['access_token']);
 
-        // Get user profile data from Google
-        $google_oauth = new Google_Service_Oauth2($client);
-        $google_account_info = $google_oauth->userinfo->get();
-        $email = $google_account_info->email;
-        $name = $google_account_info->name;
+//         // Get user profile data from Google
+//         $google_oauth = new Google_Service_Oauth2($client);
+//         $google_account_info = $google_oauth->userinfo->get();
+//         $email = $google_account_info->email;
+//         $name = $google_account_info->name;
 
-        // Replace with your actual database connection and query
-        $conn = new mysqli('localhost', 'root', '', 'adminpanel');
+//         // Replace with your actual database connection and query
+//         $conn = new mysqli('localhost', 'root', '', 'adminpanel');
 
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+//         if ($conn->connect_error) {
+//             die("Connection failed: " . $conn->connect_error);
+//         }
 
-        // Check if the user exists in your database
-        $sql = "SELECT * FROM users WHERE email = '$email'";
-        $result = $conn->query($sql);
+//         // Check if the user exists in your database
+//         $sql = "SELECT * FROM users WHERE email = '$email'";
+//         $result = $conn->query($sql);
 
-        if ($result->num_rows > 0) {
-            $_SESSION['username'] = $email;
-            header("Location: dashboard.php");
-            exit();
-        } else {
-            // If user does not exist, you can create a new user or show an error
-            $_SESSION['status'] = "User does not exist. Please register.";
-        }
+//         if ($result->num_rows > 0) {
+//             $_SESSION['username'] = $email;
+//             header("Location: dashboard.php");
+//             exit();
+//         } else {
+//             // If user does not exist, you can create a new user or show an error
+//             $_SESSION['status'] = "User does not exist. Please register.";
+//         }
 
-        $conn->close();
-    } else {
-        echo 'Error: Access token not found.';
-        exit();
-    }
-}
+//         $conn->close();
+//     } else {
+//         echo 'Error: Access token not found.';
+//         exit();
+//     }
+// }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
@@ -145,21 +145,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                             </div>
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-user btn-block">Login</button>
+                                        
+                                        <!-- Removed Google and Facebook login options -->
                                         <hr>
-                                        <a href="<?php echo $client->createAuthUrl(); ?>" class="btn btn-google btn-user btn-block">
-                                            <i class="fab fa-google fa-fw"></i> Login with Google
-                                        </a>
-                                        <a href="dashboard.php" class="btn btn-facebook btn-user btn-block">
-                                            <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                                        </a>
+                                        <div class="text-center">
+                                            <a class="small" href="forgot-password.php">Forgot Password?</a>
+                                        </div>
+                                        
+                                        <div class="text-center">
+                                            <a class="small" href="register.php">Create an Account!</a>
+                                        </div>
                                     </form>
-                                    <hr>
-                                    <div class="text-center">
-                                        <a class="small" href="forgot-password.php">Forgot Password?</a>
-                                    </div>
-                                    <div class="text-center">
-                                        <a class="small" href="register.php">Create an Account!</a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
