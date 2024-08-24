@@ -22,6 +22,12 @@ $unpaid_dues_query = "SELECT SUM(amount) AS total FROM monthly_dues WHERE status
 $unpaid_dues_result = mysqli_query($connection, $unpaid_dues_query);
 $unpaid_dues = mysqli_fetch_assoc($unpaid_dues_result)['total'];
 
+// Fetch Total Unpaid Dues
+$unpaid_total_query = "SELECT SUM(amount) as total_unpaid FROM monthly_dues WHERE status='unpaid'";
+$unpaid_total_result = mysqli_query($connection, $unpaid_total_query);
+$unpaid_total_row = mysqli_fetch_assoc($unpaid_total_result);
+$unpaid_dues = $unpaid_total_row['total_unpaid'];
+
 // Fetch data for charts
 $drivers_by_status_query = "SELECT ownership_status, COUNT(*) AS count FROM drivers GROUP BY ownership_status";
 $drivers_by_status_result = mysqli_query($connection, $drivers_by_status_query);
@@ -43,6 +49,8 @@ $violations_by_type = [];
 while ($row = mysqli_fetch_assoc($violations_by_type_result)) {
     $violations_by_type[$row['violation_type']] = $row['count'];
 }
+
+
 
 
 ?>
@@ -184,7 +192,7 @@ while ($row = mysqli_fetch_assoc($violations_by_type_result)) {
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Unpaid Dues</div>
+                                <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Unpaid Monthly Dues</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">₱<?php echo number_format($unpaid_dues, 2); ?></div>
                             </div>
                             <div class="col-auto">

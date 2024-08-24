@@ -7,6 +7,7 @@ if (!$connection) {
     die("Database connection failed: " . mysqli_connect_error());
 }
 
+// Handle add offense
 if (isset($_POST['add_offense_btn'])) {
     $driver_name = $_POST['driver_name'];
     $offense_type = $_POST['offense_type'];
@@ -29,6 +30,23 @@ if (isset($_POST['add_offense_btn'])) {
     }
 
     header("Location: customer_reports.php"); // Redirect to the page where you want to display the message
+    exit(); // Ensure no further code is executed after the redirect
+}
+
+// Handle delete report
+if (isset($_POST['delete_btn'])) {
+    $id = $_POST['delete_id'];
+
+    $query = "DELETE FROM customer_reports WHERE id='$id'";
+    $query_run = mysqli_query($connection, $query);
+
+    if ($query_run) {
+        $_SESSION['success'] = "Report Deleted Successfully";
+    } else {
+        $_SESSION['status'] = "Report Deletion Failed";
+    }
+
+    header("Location: customer_reports.php");
     exit(); // Ensure no further code is executed after the redirect
 }
 ?>

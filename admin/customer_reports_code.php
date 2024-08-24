@@ -24,8 +24,9 @@ if (isset($_POST['add_offense_btn'])) {
     $offense_type = $_POST['offense_type'];
     $details = $_POST['details'];
     $fine = $_POST['fine'];
+    $offense_count = $_POST['offense_count']; // Get the offense count from the form
 
-    $query = "INSERT INTO drivers_offenses (driver_name, offense_type, details, fine) VALUES ('$driver_name', '$offense_type', '$details', '$fine')";
+    $query = "INSERT INTO drivers_offenses (driver_name, offense_type, details, fine, offense_count) VALUES ('$driver_name', '$offense_type', '$details', '$fine', '$offense_count')";
     $query_run = mysqli_query($connection, $query);
 
     if ($query_run) {

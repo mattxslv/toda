@@ -62,6 +62,7 @@ if (isset($_SESSION['username'])) {
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Customer Reports</span></a>
     </li>
+    
 
     <!-- Divider -->
     <hr class="sidebar-divider">
@@ -77,13 +78,20 @@ if (isset($_SESSION['username'])) {
             <span>Registered Drivers</span>
         </a>
     </li>
-    
     <li class="nav-item">
-        <a class="nav-link" href="manage_trips.php">
-            <i class="fas fa-fw fa-route"></i>
-            <span>Manage Trips</span>
+        <a class="nav-link" href="incentives_dashboard.php">
+            <i class="fas fa-fw fa-gift"></i>
+            <span>Incentives</span>
         </a>
     </li>
+    
+    <li class="nav-item">
+        <a class="nav-link" href="app_revenue.php">
+            <i class="fas fa-fw fa-dollar-sign"></i>
+            <span>App Revenue</span>
+        </a>
+    </li>
+
     <!-- Nav Item - Driver Performance -->
     <li class="nav-item">
         <a class="nav-link" href="driver_performance.php">
