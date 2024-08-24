@@ -221,46 +221,54 @@ include('includes/navbar.php');
 </div>
 
     <!-- Add Offense Modal -->
-    <div class="modal fade" id="addOffenseModal" tabindex="-1" role="dialog" aria-labelledby="addOffenseModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="addOffenseModalLabel">Add Offense</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+<div class="modal fade" id="addOffenseModal" tabindex="-1" role="dialog" aria-labelledby="addOffenseModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addOffenseModalLabel">Add Offense</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="add_offense.php" method="POST">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="driver_name">Driver Name</label>
+                        <input type="text" class="form-control" id="driver_name" name="driver_name" placeholder="Enter Driver Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="offense_type">Offense Type</label>
+                        <select class="form-control" id="offense_type" name="offense_type" required>
+                            <option value="Minor">Minor</option>
+                            <option value="Moderate">Moderate</option>
+                            <option value="Major">Major</option>
+                            <option value="Severe">Severe</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="details">Details</label>
+                        <textarea class="form-control" id="details" name="details" rows="3" placeholder="Enter Details" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="fine">Fine</label>
+                        <input type="number" class="form-control" id="fine" name="fine" placeholder="Enter Fine Amount" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="offense_count">Offense Count</label>
+                        <select class="form-control" id="offense_count" name="offense_count" required>
+                            <option value="First">First</option>
+                            <option value="Second">Second</option>
+                            <option value="Third">Third</option>
+                        </select>
+                    </div>
                 </div>
-                <form action="add_offense.php" method="POST">
-    <div class="modal-body">
-        <div class="form-group">
-            <label for="driver_name">Driver Name</label>
-            <input type="text" class="form-control" id="driver_name" name="driver_name" placeholder="Enter Driver Name" required>
-        </div>
-        <div class="form-group">
-            <label for="offense_type">Offense Type</label>
-            <select class="form-control" id="offense_type" name="offense_type" required>
-                <option value="Minor">Minor</option>
-                <option value="Moderate">Moderate</option>
-                <option value="Major">Major</option>
-                <option value="Severe">Severe</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="details">Details</label>
-            <textarea class="form-control" id="details" name="details" rows="3" placeholder="Enter Details" required></textarea>
-        </div>
-        <div class="form-group">
-            <label for="fine">Fine</label> <!-- Removed (PHP) from the label -->
-            <input type="number" class="form-control" id="fine" name="fine" placeholder="Enter Fine Amount" step="0.01" required>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" name="add_offense_btn" class="btn btn-primary">Save</button>
+                </div>
+            </form>
         </div>
     </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" name="add_offense_btn" class="btn btn-primary">Save</button>
-    </div>
-</form>
-</div>
-</div>
 </div>
 
 </div>

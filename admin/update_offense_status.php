@@ -27,4 +27,5 @@ if (isset($_POST['offense_id'])) {
     header("Location: " . $_SERVER['HTTP_REFERER']); // Redirect back to the same page
     exit(); // Ensure no further code is executed after the redirect
 }
+
 ?>
