@@ -258,16 +258,8 @@ include('includes/navbar.php');
             <textarea class="form-control" id="details" name="details" rows="3" placeholder="Enter Details" required></textarea>
         </div>
         <div class="form-group">
-            <label for="fine">Fine</label>
+            <label for="fine">Fine</label> <!-- Removed (PHP) from the label -->
             <input type="number" class="form-control" id="fine" name="fine" placeholder="Enter Fine Amount" step="0.01" required>
-        </div>
-        <div class="form-group">
-            <label for="offense_count">Offense Count</label>
-            <select class="form-control" id="offense_count" name="offense_count" required>
-                <option value="1st">1st Offense</option>
-                <option value="2nd">2nd Offense</option>
-                <option value="3rd">3rd Offense</option>
-            </select>
         </div>
     </div>
     <div class="modal-footer">
@@ -275,6 +267,9 @@ include('includes/navbar.php');
         <button type="submit" name="add_offense_btn" class="btn btn-primary">Save</button>
     </div>
 </form>
+</div>
+</div>
+</div>
 
 </div>
 <!-- End of Main Content -->

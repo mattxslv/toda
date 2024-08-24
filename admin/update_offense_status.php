@@ -38,34 +38,14 @@ if (isset($_POST['offense_id'])) {
             // Debugging: Log the query and its parameters
             error_log("Executing query: $query with parameters: " . $$field . ", $offense_id");
 
-            if ($query_run) {
-                $_SESSION['success'] = ucfirst($field) . " updated successfully";
-                // Debugging: Log success message
-                error_log(ucfirst($field) . " updated successfully");
-            } else {
-                $_SESSION['status'] = "Update failed: " . mysqli_stmt_error($stmt);
-                // Debugging: Log the error
-                error_log("Update failed: " . mysqli_stmt_error($stmt));
-            }
-            mysqli_stmt_close($stmt);
+        if ($query_run) {
+            $_SESSION['success'] = "Update successful";
+        } else {
+            $_SESSION['status'] = "Update failed";
         }
     }
 
-    // Verify the update
-    $verify_query = "SELECT offense_count FROM drivers_offenses WHERE id=?";
-    $stmt = mysqli_prepare($connection, $verify_query);
-    mysqli_stmt_bind_param($stmt, 'i', $offense_id);
-    mysqli_stmt_execute($stmt);
-    mysqli_stmt_bind_result($stmt, $updated_offense_count);
-    mysqli_stmt_fetch($stmt);
-    mysqli_stmt_close($stmt);
-
-    // Debugging: Log the updated offense count
-    error_log("Updated offense count for ID $offense_id: $updated_offense_count");
-
-    header("Location: customer_reports.php");
-    exit(); // Ensure no further code is executed
+    header("Location: " . $_SERVER['HTTP_REFERER']); // Redirect back to the same page
+    exit(); // Ensure no further code is executed after the redirect
 }
-
-mysqli_close($connection); // Close the database connection
 ?>
